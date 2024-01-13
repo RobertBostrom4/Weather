@@ -1,32 +1,29 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
-    // Entry point for your application
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+        }),
+    ],
     entry: './src/index.js',
-
-    // Output directory for bundled files
     output: {
+        filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        clean: true,
     },
-
-    // Module resolution rules
     module: {
         rules: [
-            // Transpile JavaScript files using Babel
-
-            // Load CSS files
             {
-                test: /\.css$/,
+                test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },
-
-            // Load image files
             {
-                test: /\.(png|jpg|jpeg|gif)$/,
-                use: ['file-loader'],
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
             },
         ],
-    },   
-
+    },
 };
