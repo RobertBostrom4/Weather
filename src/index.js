@@ -1,7 +1,38 @@
-async function getWeatherData() {
-    const weather = await fetch('http://api.weatherapi.com/v1/forecast.json?key=3aa654fe53e441b690942131240801&q=London&days=1&aqi=no&alerts=no');
-    const data = await weather.json();
-    console.log(data);
+import './style.css';
+import { getCurrentDayData } from './currentDayData';
+import { getOtherDayData } from './getOtherDayData';
+import { tempConversion } from './tempConversion';
+
+const displayButton = document.querySelector('.display-button');
+const searchBar = document.querySelector('.search');
+let location = 'London';
+
+
+function handleEnter(event) {
+
+    if (event.key === "Enter") {
+        const otherDays = document.querySelector('.other-days');
+        location = searchBar.value;
+        searchBar.value = '';
+
+        while (otherDays.firstChild) {
+            otherDays.removeChild(otherDays.firstChild);
+        }
+
+        getCurrentDayData(location);
+        getOtherDayData(location, 'Fahrenheit');
+
+    }
+
 }
 
-getWeatherData();
+searchBar.addEventListener('keydown', (handleEnter));
+
+displayButton.addEventListener('click', () => {
+
+    tempConversion(location);
+});
+
+
+getOtherDayData(location, 'Fahrenheit');
+getCurrentDayData(location);
