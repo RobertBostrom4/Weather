@@ -1,1 +1,2 @@
 # Weather
+This project focuses on creating a dynamic weather forecast site using JavaScript and integrating it with a weather API. The user can search for a specific location and toggle between displaying the weather data in Fahrenheit or Celsius. Additionally,the page's appearance is customized based on the weather data.
