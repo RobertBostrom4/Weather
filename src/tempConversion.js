@@ -2,7 +2,7 @@ import { getOtherDayData } from "./getOtherDayData";
 
 
 export async function tempConversion(location) {
-    const weather = await fetch('http://api.weatherapi.com/v1/forecast.json?key=3aa654fe53e441b690942131240801&q=' + location + '&days=1&aqi=no&alerts=no');
+    const weather = await fetch('http://api.weatherapi.com/v1/forecast.json?key=3aa654fe53e441b690942131240801&q=' + location + '&days=1&aqi=no&alerts=no', {mode:"cors"});
     const data = await weather.json();
 
     const displayButton = document.querySelector('.display-button');

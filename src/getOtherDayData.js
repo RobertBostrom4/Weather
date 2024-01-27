@@ -2,7 +2,7 @@ import { getDay } from "date-fns";
 
 
 export async function getOtherDayData(location, tempScale) {
-    const weather = await fetch('http://api.weatherapi.com/v1/forecast.json?key=3aa654fe53e441b690942131240801&q=' + location + '&days=8&aqi=no&alerts=no');
+    const weather = await fetch('http://api.weatherapi.com/v1/forecast.json?key=3aa654fe53e441b690942131240801&q=' + location + '&days=8&aqi=no&alerts=no', {mode: "cors"});
     const data = await weather.json();
 
     for (let i = 1; i < data['forecast']['forecastday'].length; i++) {
